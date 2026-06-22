@@ -1,0 +1,7 @@
+group,method,psnr,ssim,mse,mae,num_samples
+sd_training_ablation,Radio-FiLM-UNet (with SD),27.481727,0.812669,0.002989822,0.036380306,1272
+sd_training_ablation,Radio-FiLM-UNet (trained no SD),14.589133,0.476400,0.044211000,0.164286000,1272
+sd_training_ablation,Radio-UNet-Structure (with SD),28.511122,0.836435,0.002531224,0.033158250,1272
+sd_training_ablation,Radio-UNet-Structure (trained no SD),14.620000,0.477800,0.042845000,0.162547000,1272
+sd_training_ablation,Radio-SwinIR (with SD),28.337493,0.832421,0.002899461,0.034909733,1272
+sd_training_ablation,Radio-SwinIR (trained no SD),14.340000,0.466000,0.044904000,0.167074000,1272

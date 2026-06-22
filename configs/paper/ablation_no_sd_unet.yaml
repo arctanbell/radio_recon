@@ -1,0 +1,44 @@
+experiment:
+  name: "paper_ablation_no_sd_unet"
+  description: "U-Net ablation using only PSF and dirty image inputs"
+  seed: 42
+
+data:
+  data_dir: "data/simobs"
+  num_workers: 4
+  train_ratio: 0.8
+  val_ratio: 0.1
+  test_ratio: 0.1
+  normalization:
+    strategy: "independent"
+  augmentation:
+    enabled: true
+    flip_prob: 0.5
+    rotate_prob: 0.5
+    noise_sigma: 0.0
+
+model:
+  type: "simple_unet"
+  in_channels: 2
+  out_channels: 1
+  features: [128, 256, 512, 1024]
+  bilinear: true
+
+loss:
+  type: "combined"
+  components:
+    - name: "mse"
+      weight: 0.5
+    - name: "l1"
+      weight: 0.3
+    - name: "fft"
+      weight: 0.2
+
+training:
+  input_mode: "psf_dirty"
+  num_epochs: 60
+  batch_size: 8
+  learning_rate: 0.0001
+  min_lr: 0.000001
+  val_interval: 1
+  output_dir: "outputs/paper_ablation_no_sd_unet"

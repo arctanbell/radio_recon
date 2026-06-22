@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.pytest_cache/
+.mypy_cache/
+
+# Environments
+.venv/
+venv/
+.env
+
+# Training and evaluation outputs
+outputs/
+logs/
+checkpoints/
+.release_preview/
+*.pt
+*.pth
+*.ckpt
+
+# Local data
+data/simobs/
+*.fits
+*.FITS
+*.npy
+*.npz
+
+# Notebook and editor clutter
+.ipynb_checkpoints/
+.DS_Store
+._*
+.idea/
+.vscode/
+
+# Paper build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.log
+paper/*.out
+paper/*.pdf
+paper/*.bak*
+paper/%OUTDIR%/
+paper/docx_build/node_modules/
+casa-*.log

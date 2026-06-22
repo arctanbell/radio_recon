@@ -1,0 +1,11 @@
+group,method,psnr,ssim,mse,mae,num_samples
+classical_radio,CASA tclean (Hogbom),11.540927,0.292648,0.088575208,0.233001973,1272
+classical_radio,CASA tclean (multi-scale),11.554974,0.294176,0.088570120,0.232989697,1272
+input_only,Dirty image input,11.233437,0.274782,0.093260730,0.239890944,1272
+input_only,SD image input,19.036676,0.662339,0.015924060,0.087287438,1272
+generic_restoration,UNet-standard,14.599133,0.477533,0.042880103,0.162625238,1272
+generic_restoration,SwinIR-standard,14.372308,0.467627,0.044976715,0.166429281,1272
+generic_restoration,DnCNN-standard,14.178213,0.451646,0.045639932,0.169784516,1272
+radio_deep_learning,Radio-UNet-Structure,28.511122,0.836435,0.002531224,0.033158250,1272
+radio_deep_learning,Radio-SwinIR,28.337493,0.832421,0.002899461,0.034909733,1272
+radio_deep_learning,Radio-FiLM-UNet,27.481727,0.812669,0.002989822,0.036380306,1272

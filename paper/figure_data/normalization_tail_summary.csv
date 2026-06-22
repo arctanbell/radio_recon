@@ -1,0 +1,5 @@
+strategy,weak_tail_ratio_lt_0p05_mean,weak_tail_ratio_lt_0p05_std,normalized_gt_range_mean,normalized_gt_range_std
+independent,0.07159172,0.10429333,1.00000000,0.00000000
+ratio_preserving,0.00000000,0.00000000,0.34171653,0.25153483
+arcsinh,0.03780443,0.05983994,1.00000000,0.00000000
+adaptive,0.07159172,0.10429333,1.00000000,0.00000000

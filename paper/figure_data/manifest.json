@@ -1,0 +1,13 @@
+{
+  "config": "configs/experiments/exp001_norm_independent.yaml",
+  "benchmark_csv": "paper/figure_data/sd_multilevel_metrics.csv",
+  "num_test_samples": 1272,
+  "outputs": [
+    "clean_casa_metrics.csv",
+    "input_image_baseline_metrics.csv",
+    "sd_multilevel_metrics.csv",
+    "sd_training_ablation_metrics.csv",
+    "normalization_histograms.csv",
+    "normalization_tail_summary.csv"
+  ]
+}
