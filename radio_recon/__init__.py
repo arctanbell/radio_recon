@@ -1,3 +1,3 @@
-"""PC-RIIR radio image reconstruction package."""
+"""radio_recon image reconstruction package."""
 
 __version__ = "0.1.0"

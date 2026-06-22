@@ -1,4 +1,4 @@
-"""Dataset and dataloader helpers for PC-RIIR experiments."""
+"""Dataset and dataloader helpers for the manuscript experiments."""
 
 from __future__ import annotations
 

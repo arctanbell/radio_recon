@@ -1,4 +1,4 @@
-"""Normalization strategies used by the PC-RIIR experiments."""
+"""Normalization strategies used by the manuscript experiments."""
 
 from __future__ import annotations
 
