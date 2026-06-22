@@ -1,9 +1,8 @@
 # radio_recon
 
-Code and reproducibility materials for the manuscript **Structure-Aware Multimodal Learning for Radio Interferometric Image Reconstruction**.
+Official code and reproducibility materials for the paper **Structure-Aware Multimodal Learning for Radio Interferometric Image Reconstruction**.
 
-This is the GitHub companion repository cited in the paper: `https://github.com/arctanbell/radio_recon.git`.
-The public release is scoped to the paper-facing package, configs, scripts, manuscript assets, and verification notes listed in [docs/PUBLIC_RELEASE_FILES.txt](docs/PUBLIC_RELEASE_FILES.txt).
+This repository provides the model implementations, configuration files, evaluation scripts, figure data, and manuscript assets needed to reproduce the main experiments.
 
 ## Repository Layout
 
