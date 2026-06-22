@@ -4,7 +4,7 @@ Large checkpoints should be hosted outside Git. Fill the URL and checksum fields
 
 | Name | Paper Role | Config | Weight URL | SHA256 | Expected PSNR | Expected SSIM | Status |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Main U-Net | Main supervised U-Net run | `configs/paper/main_unet.yaml` | TBD | TBD | TBD | TBD | pending |
+| Main structure-aware U-Net | Main supervised U-Net run with structure-aware loss | `configs/paper/main_unet.yaml` | TBD | TBD | TBD | TBD | pending |
 | Main SwinIR | Transformer comparison | `configs/paper/main_swinir.yaml` | TBD | TBD | TBD | TBD | pending |
 | No-SD U-Net | Single-dish input ablation | `configs/paper/ablation_no_sd_unet.yaml` | TBD | TBD | TBD | TBD | pending |
 | FiLM U-Net | Architecture comparison | `configs/paper/architecture_film_unet.yaml` | TBD | TBD | TBD | TBD | pending |

@@ -6,7 +6,7 @@ This file maps manuscript results to public configs, checkpoints, and commands.
 
 | Paper Item | Config | Checkpoint | Command | Expected Output |
 | --- | --- | --- | --- | --- |
-| Main U-Net row | `configs/paper/main_unet.yaml` | `checkpoints/main_unet.pt` | `DATA_DIR=/path/to/simobs python scripts/evaluate_model.py --config configs/paper/main_unet.yaml --checkpoint checkpoints/main_unet.pt --output_dir outputs/eval_main_unet` | TBD |
+| Main structure-aware U-Net row | `configs/paper/main_unet.yaml` | `checkpoints/main_unet.pt` | `DATA_DIR=/path/to/simobs python scripts/evaluate_model.py --config configs/paper/main_unet.yaml --checkpoint checkpoints/main_unet.pt --output_dir outputs/eval_main_unet` | TBD |
 | Main SwinIR row | `configs/paper/main_swinir.yaml` | `checkpoints/main_swinir.pt` | `DATA_DIR=/path/to/simobs python scripts/evaluate_model.py --config configs/paper/main_swinir.yaml --checkpoint checkpoints/main_swinir.pt --output_dir outputs/eval_main_swinir` | TBD |
 
 ## Ablations

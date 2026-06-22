@@ -38,7 +38,7 @@
 	Independent per-source normalization yields the most stable optimization, and adding gradient- and Laplacian-based structure terms improves reconstruction more than architecture scaling alone.
 	The best model, a larger U-Net with the composite loss, reaches 28.46\,dB PSNR and 0.836 SSIM on a shared 1,272-sample evaluation split, improving over the simple U-Net baseline by +2.31\,dB.
 	For context, CASA \texttt{tclean} references without SD conditioning reach 11.54\,dB PSNR for H{\"o}gbom CLEAN and 11.55\,dB for multi-scale CLEAN under the same split and normalization protocol.
-	Matched same-backbone ablations further show that removing SD input causes a 12.9--14.0\,dB PSNR drop, indicating that low-spatial-frequency information is a major contributor to the final image quality.
+	Matched architecture-level ablations further show that removing SD input causes a 12.9--14.0\,dB PSNR drop, indicating that low-spatial-frequency information is a major contributor to the final image quality.
 	These results support structure-aware multimodal learning as a practical high-fidelity complement to classical radio-imaging workflows.
 	Code and reproducibility resources are available at \url{https://github.com/arctanbell/radio_recon.git}.
 \end{abstract}
@@ -497,7 +497,7 @@ On the top 90\% of the test set, the model reached 29.46\,dB PSNR and 0.860 SSIM
 To assess the practical value of SD-informed reconstruction, a unified benchmark is first constructed on the same 1,272-sample shared evaluation split.
 Table~\ref{tab:sd_effect_proxy} and Figure~\ref{fig:sd_ablation_comp} compare CASA \texttt{tclean} references and dirty-only generic restorers against radio-tailored multimodal models that ingest PSF, dirty-image, and SD information.
 Because this comparison changes architecture and training objective together with the input channels, it should be interpreted as a system-level benchmark rather than a strict causal ablation.
-The comparison separates classical CLEAN, input-only references, dirty-only learned restoration, and SD-inclusive radio models, and it motivates the dedicated same-backbone SD study below.
+The comparison separates classical CLEAN, input-only references, dirty-only learned restoration, and SD-inclusive radio models, and it motivates the dedicated architecture-matched SD study below.
 
 \begin{table*}[htbp]
 	\centering
@@ -544,16 +544,16 @@ The CASA H{\"o}gbom and multi-scale \texttt{tclean} references reach 11.54 and 1
 The direct SD image input reaches 19.04\,dB PSNR and 0.662 SSIM, indicating that SD carries substantial target-relevant large-scale information.
 The strongest dirty-only generic models remain at 14.2--14.6\,dB PSNR, whereas the multimodal radio models occupy the 27.5--28.5\,dB regime.
 The best model improves by 9.47\,dB over the SD-only input reference, indicating that the learned system is not simply copying the SD channel.
-Because the benchmark varied input modality, model design, and training objective simultaneously, the specific contribution of SD was isolated separately through the matched-backbone ablation below.
+Because the benchmark varied input modality, model design, and training objective simultaneously, the specific contribution of SD was isolated separately through the architecture-matched ablation below.
 
-\subsection{Strict SD Training Ablation}
+\subsection{Architecture-Matched SD Training Ablation}
 
-A controlled same-backbone SD ablation is further performed by training each radio architecture in two modes: \textit{with SD} (PSF+dirty+SD) and \textit{PSF+dirty only}.
+A controlled architecture-matched SD ablation is further performed by training each radio architecture in two modes: \textit{with SD} (PSF+dirty+SD) and \textit{PSF+dirty only}.
 Results are reported in Table~\ref{tab:sd_train_ablation} and Figure~\ref{fig:sd_train_delta} on the same 1,272-sample shared evaluation split.
 
 \begin{table*}[htbp]
 	\centering
-	\caption{Strict SD training ablation on identical backbones (1,272 evaluation samples).
+	\caption{Architecture-matched SD training ablation on identical backbones (1,272 evaluation samples).
 		Each pair compares the same architecture trained with and without SD input.
 	}
 	\label{tab:sd_train_ablation}
@@ -576,13 +576,13 @@ Results are reported in Table~\ref{tab:sd_train_ablation} and Figure~\ref{fig:sd
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=\columnwidth]{figures/sd_training_delta_comparison.pdf}
-	\caption{PSNR gain from SD input under strict same-backbone training ablation.
+	\caption{PSNR gain from SD input under architecture-matched training ablation.
 		All three backbones show large improvements when SD is included.
 	}
 	\label{fig:sd_train_delta}
 \end{figure}
 
-The same-backbone ablation indicates that SD input is a major contributor to reconstruction quality in this task.
+The architecture-matched ablation indicates that SD input is a major contributor to reconstruction quality in this task.
 Across all three backbones, removing SD during training reduces PSNR by 12.9--14.0\,dB and substantially worsens SSIM, while MSE and MAE increase by more than one order of magnitude.
 The consistency of this effect across FiLM U-Net, structure-aware U-Net, and SwinIR suggests that the gain is not architecture-specific.
 Instead, the SD channel supplies large-scale information that the interferometric inputs alone do not recover reliably under the present simulation setup.
@@ -648,7 +648,7 @@ Including SD data as an explicit conditioning channel is important for this task
 Because interferometers miss short spacings, multiple sky models can remain compatible with the same dirty image once compact structure has been fitted.
 In the proposed multimodal formulation, the SD channel reduces that ambiguity by providing total-power information, while the PSF and dirty channels preserve the instrumental response and high-frequency constraints.
 
-The strict same-backbone ablation indicates that the SD channel is not merely correlated with stronger model configurations; it is a major source of performance gain under the current benchmark.
+The architecture-matched ablation indicates that the SD channel is not merely correlated with stronger model configurations; it is a major source of performance gain under the current benchmark.
 That conclusion is especially relevant for applications involving diffuse or extended structures, where large-scale morphology can strongly affect reconstruction utility.
 Future work should quantify this effect more directly using low-frequency residual spectra and robustness tests against SD calibration or noise perturbations.
 
@@ -681,7 +681,7 @@ The results support several conclusions at the intersection of learning-based im
 	\item Combining pixel, frequency, gradient, and Laplacian losses improves reconstruction quality more effectively than increasing model capacity alone, showing the value of structure-aware objectives for sparse Fourier imaging.
 	\item The best-performing model, a larger U-Net with the composite objective, reaches 28.46\,dB PSNR and 0.836 SSIM on the shared 1,272-sample evaluation split.
 	\item CASA \texttt{tclean} provides a useful classical deconvolution reference point, while the learned one-pass models achieve substantially higher agreement with the benchmark target under the reported protocol.
-	\item Same-backbone ablations show that the auxiliary SD channel provides strong complementary short-spacing information, with a 12.9--14.0\,dB PSNR penalty when it is removed.
+	\item Architecture-matched ablations show that the auxiliary SD channel provides strong complementary short-spacing information, with a 12.9--14.0\,dB PSNR penalty when it is removed.
 	\item Remaining failure cases concentrate in low-reference-range targets, suggesting that adaptive weighting, curriculum learning, or uncertainty-aware training may further improve robustness.
 \end{enumerate}
 
@@ -690,7 +690,7 @@ The proposed framework provides a practical one-pass reconstruction model after 
 
 \section{Code Availability}
 
-Code, configuration files, evaluation scripts, and sample-list metadata for reproducing the main comparisons are available at \url{https://github.com/arctanbell/radio_recon.git}.
+Code, configuration files, evaluation scripts, figure-data summaries, and reproducibility notes for the main comparisons are available at \url{https://github.com/arctanbell/radio_recon.git}.
 
 % ============================================================
 \appendix
@@ -698,7 +698,7 @@ Code, configuration files, evaluation scripts, and sample-list metadata for repr
 \section{Reproducibility Notes}
 \label{sec:appendix_repro}
 
-To improve reproducibility, the principal comparisons are tied to fixed sample-name lists, explicit normalization rules, configuration-recorded loss weights, and checkpoint-based evaluation.
+To improve reproducibility, the principal comparisons are tied to a deterministic seed-42 split protocol, explicit normalization rules, configuration-recorded loss weights, and checkpoint-based evaluation.
 Loss weights are configuration-specific rather than universal defaults; the paper reports the relevant settings in the method description and uses the archived configuration files as the source of record.
 Unless explicitly stated otherwise, results are reported on the shared 1,272-sample evaluation split so that architecture, loss, and modality comparisons remain directly comparable.
 

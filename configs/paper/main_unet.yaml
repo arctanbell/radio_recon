@@ -1,6 +1,6 @@
 experiment:
   name: "paper_main_unet"
-  description: "Main U-Net configuration for the paper-release repository"
+  description: "Main structure-aware larger U-Net configuration for the paper-release repository"
   seed: 42
 
 data:
@@ -15,7 +15,7 @@ data:
     enabled: true
     flip_prob: 0.5
     rotate_prob: 0.5
-    noise_sigma: 0.0
+    noise_sigma: 0.01
 
 model:
   type: "simple_unet"
@@ -23,23 +23,26 @@ model:
   out_channels: 1
   features: [128, 256, 512, 1024]
   bilinear: true
-  bottleneck_depth: 4
 
 loss:
   type: "combined"
   components:
     - name: "mse"
-      weight: 0.5
+      weight: 0.46
     - name: "l1"
-      weight: 0.3
+      weight: 0.30
     - name: "fft"
-      weight: 0.2
+      weight: 0.20
+    - name: "gradient"
+      weight: 0.02
+    - name: "laplacian"
+      weight: 0.02
 
 training:
   num_epochs: 260
   batch_size: 8
   learning_rate: 0.00005
   weight_decay: 0.00001
-  min_lr: 0.0000005
+  min_lr: 0.0000003
   val_interval: 5
   output_dir: "outputs/paper_main_unet"
